@@ -36,6 +36,7 @@ runs:
         -v /tmp/gce-cloudsql-proxy:/tmp/gce-cloudsql-proxy \
         gcr.io/cloudsql-docker/gce-proxy:${{ inputs.proxy_version }} \
         /cloud_sql_proxy \
+          -enable_iam_login \
           -credential_file /tmp/gce-cloudsql-proxy/key.json \
           -dir /tmp \
           -instances=${{ inputs.instance }}=tcp:127.0.0.1:${{ inputs.port }}
